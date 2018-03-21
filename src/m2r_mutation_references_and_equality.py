@@ -7,8 +7,8 @@ This module demonstrates:
  5. Two equality operators:   is   ==
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Rion Sato.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -18,7 +18,7 @@ import rosegraphics as rg
 ########################################################################
 
 # ----------------------------------------------------------------------
-# TODO: 2.
+# DONE: 2.
 #  Step a:  READ the   mutate_point   function below.
 #
 #  Step b:  Note that the code in main has 5 parts numbered 1, 2, ... 5.
@@ -56,11 +56,11 @@ def main():
 
     point = rg.Point(45, 100)
 
-    print('Before:', point)
+    print('Before:', point) #45,100
     point.y = 33
 
     # The next line shows that the INSIDES of   point   has changed.
-    print('After: ', point)  # Look at what gets printed!
+    print('After: ', point)  # 45,33
 
     # ------------------------------------------------------------------
     # 2. Mutates the object again, this time from within a function call
@@ -69,11 +69,11 @@ def main():
     print('Showing mutation via a function call')
     print('(which does assignment):')
 
-    print('Before:', point)
+    print('Before:', point) #45,33
     mutate_point(point)
 
     # The next line shows that the INSIDES of   point   has changed.
-    print('After: ', point)  # Look at what gets printed!
+    print('After: ', point)  # 45,77
 
     # ------------------------------------------------------------------
     # 3. Assigns another variable to refer to the same rg.Point
@@ -87,9 +87,9 @@ def main():
 
     point2 = point
 
-    print('Before:', point, point2)
-    point2.x = 100
-    print('After: ', point, point2)  # Note that  point.x  ALSO changed
+    print('Before:', point, point2) #45,77  45,77
+    point2.x = 100                  #point2 is a pointer that points point1
+    print('After: ', point, point2) # 100,77  100,77
 
     # ------------------------------------------------------------------
     # 4. Re-assigns the   point   variable to refer to another rg.Point.
@@ -98,9 +98,9 @@ def main():
     print()
     print('RE-ASSIGNING an object is  NOT  MUTATING the OBJECT:')
 
-    print('Before:', point, point2)
-    point = rg.Point(10, 6)
-    print(point, point2)  # Prints the two DIFFERENT rg.Points
+    print('Before:', point, point2) #100,77  100,77
+    point = rg.Point(10, 6)         #constracted new instance object
+    print(point, point2)            #10,6  100,77
 
     # ------------------------------------------------------------------
     # 5. Shows the difference betwee the   is   operator
@@ -120,16 +120,16 @@ def main():
     point4 = rg.Point(100, 20)
 
     print()
-    print('Before: point3 and point4 are:', point3, point4)
-    print('T or F: point3 is point4?', point3 is point4)
-    print('T or F: point3 == point4?', point3 == point4)
+    print('Before: point3 and point4 are:', point3, point4) #100,20  100,20
+    print('T or F: point3 is point4?', point3 is point4)    #false
+    print('T or F: point3 == point4?', point3 == point4)    #true
 
     point3.fill_color = 'blue'
     print()
-    print('After: point3 and point4 are:', point3, point4)
-    print('Fillcolors are:', point3.fill_color, point4.fill_color)
-    print('T or F: point3 is point4?', point3 is point4)
-    print('T or F: point3 == point4?', point3 == point4)
+    print('After: point3 and point4 are:', point3, point4)          #100,20  100,20
+    print('Fillcolors are:', point3.fill_color, point4.fill_color)  #blue  black
+    print('T or F: point3 is point4?', point3 is point4)            #false
+    print('T or F: point3 == point4?', point3 == point4)            #false
 
     print()
     print('Second, another Point (point5) is assigned')
@@ -137,20 +137,20 @@ def main():
 
     print()
     print('Here is the IS operator:')
-    point5 = point3
+    point5 = point3     #these point same object
 
-    print('points3, 4 and 5 are:', point3, point4, point5)
+    print('points3, 4 and 5 are:', point3, point4, point5)          #100,20  100,20  100,20
     print('Fillcolors are:',
-          point3.fill_color, point4.fill_color, point5.fill_color)
-    print('T or F: point3 is point5?', point3 is point5)
-    print('T or F: point3 is point4?', point3 is point4)
-    print('T or F: point4 is point5?', point4 is point5)
+          point3.fill_color, point4.fill_color, point5.fill_color)  #blue  black, blue
+    print('T or F: point3 is point5?', point3 is point5)            #true
+    print('T or F: point3 is point4?', point3 is point4)            #false
+    print('T or F: point4 is point5?', point4 is point5)            #false
 
     print()
     print('Now the == operator:')
-    print('T or F: point3 == point5?', point3 == point5)
-    print('T or F: point3 == point4?', point3 == point4)
-    print('T or F: point4 == point5?', point4 == point5)
+    print('T or F: point3 == point5?', point3 == point5)    #true
+    print('T or F: point3 == point4?', point3 == point4)    #false
+    print('T or F: point4 == point5?', point4 == point5)    #false
 
 
 # ----------------------------------------------------------------------
